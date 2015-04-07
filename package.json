@@ -1,0 +1,22 @@
+{
+  "name": "vigour-native-statusBar",
+  "version": "0.0.1",
+  "author": "Vigour.io <dev@vigour.io>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vigour-io/vigour-native-statusBar"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "description": "Control the native status bar from a web app",
+  "bugs": {
+    "url": "https://github.com/vigour-io/vigour-native-statusBar/issues"
+  },
+  "homepage": "https://github.com/vigour-io/vigour-native-statusBar",
+  "dependencies": {
+  },
+  "optionalDependencies": {
+  },
+  "license": "BSD-2-Clause"
+}
