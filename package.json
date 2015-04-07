@@ -15,6 +15,7 @@
   },
   "homepage": "https://github.com/vigour-io/vigour-native-statusBar",
   "dependencies": {
+    "vigour-native": "git+ssh://git@github.com:vigour-io/vigour-native.git#master"
   },
   "optionalDependencies": {
   },
