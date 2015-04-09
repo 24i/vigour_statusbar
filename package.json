@@ -15,9 +15,19 @@
   },
   "homepage": "https://github.com/vigour-io/vigour-native-statusBar",
   "dependencies": {
-    "vigour-native": "git+ssh://git@github.com:vigour-io/vigour-native.git#master"
+    "vigour-native": "git+ssh://git@github.com:vigour-io/vigour-native.git#master",
+    "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git#master"
   },
   "optionalDependencies": {
   },
-  "license": "BSD-2-Clause"
+  "license": "BSD-2-Clause",
+  "plugin": {
+    "id": "statusbar",
+    "native": {
+      "android": {
+        "class": "io.vigour.plugin.statusbar.StatusBarPlugin",
+        "extraParams": ["webView"]
+      }
+    }
+  }
 }
