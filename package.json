@@ -28,7 +28,8 @@
     "id": "statusbar",
     "android": {
       "className": "io.vigour.plugin.statusbar.StatusBarPlugin",
-      "instantiation": "new StatusBarPlugin(this, webView)"
+      "instantiation": "new StatusBarPlugin(this, webView)",
+      "libName": "statusbar-debug.aar"
     }
   }
 }

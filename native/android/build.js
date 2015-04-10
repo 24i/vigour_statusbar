@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 var spawn = require('child_process').spawn
   , fs = require('vigour-fs')
-  , cp = require('fs-sync').copy
   , log = require('npmlog')
   , Promise = require('promise')
   , path = require('path')
@@ -52,9 +51,7 @@ function copyAars() {
     console.log(file)
     var dst = path.join(__dirname, 'statusbar' + file.substr(file.indexOf('-')))
     console.log(file+' -> '+dst)
-    cp(path.join(aarDir, file)
-      , dst
-      , { force:true })
+    fs.writeFileSync(dst, fs.readFileSync(path.join(aarDir, file)))
   })
   log.info('done')
 }
