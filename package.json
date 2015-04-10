@@ -9,6 +9,9 @@
   "engines": {
     "node": ">=0.10.0"
   },
+  "scripts": {
+    "build-android": "native/android/build.js"
+  },
   "description": "Control the native status bar from a web app",
   "bugs": {
     "url": "https://github.com/vigour-io/vigour-native-statusBar/issues"
@@ -23,11 +26,9 @@
   "license": "BSD-2-Clause",
   "plugin": {
     "id": "statusbar",
-    "native": {
-      "android": {
-        "class": "io.vigour.plugin.statusbar.StatusBarPlugin",
-        "extraParams": ["webView"]
-      }
+    "android": {
+      "className": "io.vigour.plugin.statusbar.StatusBarPlugin",
+      "instantiation": "new StatusBarPlugin(this, webView)"
     }
   }
 }

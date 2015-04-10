@@ -60,7 +60,7 @@ function copyAars() {
 }
 
 Promise.resolve()
-// .then(assemble)
+.then(assemble)
 .then(copyAars)
 .catch(function(reason) {
   log.error(reason)
