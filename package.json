@@ -10,7 +10,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "build-android": "native/android/build.js"
+    "test": "test/index.js"
   },
   "description": "Control the native status bar from a web app",
   "bugs": {
@@ -19,7 +19,8 @@
   "homepage": "https://github.com/vigour-io/vigour-native-statusBar",
   "dependencies": {
     "vigour-native": "git+ssh://git@github.com:vigour-io/vigour-native.git#master",
-    "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git#master"
+    "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git#master",
+    "vigour-dev-tools": "git+ssh://git@github.com:vigour-io/vigour-dev-tools.git#master"
   },
   "optionalDependencies": {
   },
