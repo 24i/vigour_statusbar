@@ -1,7 +1,7 @@
 {
   "name": "vigour-native-statusBar",
   "version": "0.0.1",
-  "author": "Vigour.io <dev@vigour.io>",
+  "author": "Shawn Inder <shawn@vigour.io>",
   "repository": {
     "type": "git",
     "url": "https://github.com/vigour-io/vigour-native-statusBar"
@@ -9,10 +9,17 @@
   "engines": {
     "node": ">=0.10.0"
   },
+  "main": "index.js",
   "scripts": {
     "test": "test/index.js"
   },
-  "description": "Control the native status bar from a web app",
+  "description": "Allows one to control the native status bar from a web app",
+  "keywords": [
+    "vigour",
+    "native",
+    "plugin",
+    "statusBar"
+  ],
   "bugs": {
     "url": "https://github.com/vigour-io/vigour-native-statusBar/issues"
   },
@@ -22,9 +29,11 @@
     "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git#master",
     "vigour-dev-tools": "git+ssh://git@github.com:vigour-io/vigour-dev-tools.git#master"
   },
-  "optionalDependencies": {
+  "optionalDependencies": {},
+  "devDependencies": {
+    "npm": "^2.7.6",
+    "npmlog": "^1.2.0"
   },
-  "license": "BSD-2-Clause",
   "plugin": {
     "id": "statusbar",
     "android": {

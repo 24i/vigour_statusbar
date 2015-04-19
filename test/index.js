@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-var mocha = require('vigour-dev-tools').mocha
+var nativeTests = require('vigour-native/test')
+  , mocha = require('vigour-dev-tools').mocha
   , describe = mocha.describe
   , it = mocha.it
   , expect = mocha.expect
