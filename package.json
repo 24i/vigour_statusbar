@@ -11,7 +11,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "test/index.js"
+    "test": "test/test.js"
   },
   "description": "Allows one to control the native status bar from a web app",
   "keywords": [

@@ -1,34 +1,34 @@
 #!/usr/bin/env node
-var nativeTests = require('vigour-native/test')
-  , mocha = require('vigour-dev-tools').mocha
+// var nativeTests = require('vigour-native/test')
+var mocha = require('vigour-dev-tools').mocha
   , describe = mocha.describe
   , it = mocha.it
   , expect = mocha.expect
-  , statusBar = require('../')
-
+  , statusBar = require('../../../')
+  , visibilities = ['hidden', 'overlay', 'top']
 describe( 'statusBar', function () {
-  it( "get('visibility') produces one of 'hidden', 'overlay' or 'top'", function (done) {
-    statusBar.get('visibility', function (err, visibility) {
-      expect(~visibilities.indexOf(visibility)).to.be.true
+  it( "get() produces a visibility: one of 'hidden', 'overlay' or 'top'", function (done) {
+    statusBar.get(function (err, data) {
+      expect(~visibilities.indexOf(data.visibility)).to.be.true
       done(err)
     })
   })
 
-  it("hide", function (done) {
-    statusBar.hide(function (err) {
+  it("set({visibility:'hidden'}) should hide the status bar", function (done) {
+    statusBar.set({visibility:'hidden'}, function (err) {
       expect(err).to.be.null
-      statusBar.get('visibility', function (err, visibility) {
-        visibility.should.be.equal.to('hidden')
+      statusBar.get(function (err, data) {
+        data.visibility.should.be.equal.to('hidden')
         done()
       })
     })
   })
 
-  it("show", function (done) {
-    statusBar.show(function (err) {
+  it("set({visibility:'overlay'})", function (done) {
+    statusBar.set({visibility:'overlay'}, function (err) {
       expect(err).to.be.null
-      statusBar.get('visibility', function (err, visibility) {
-        visibility.should.be.equal.to('overlay')
+      statusBar.get(function (err, data) {
+        data.visibility.should.be.equal.to('overlay')
         done()
       })
     })
@@ -61,7 +61,7 @@ describe( 'statusBar', function () {
       , visibility: "hidden"
     }, function (err) {
       expect(err).to.be.null
-      statusBar.get(function (err, state) {
+      statusBar.get(function (err, data) {
         expect(err).to.be.null
         data.bg.should.be.equal("#098765")
         data.color.should.be.equal("#123456")
