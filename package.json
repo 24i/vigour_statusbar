@@ -11,6 +11,7 @@
   },
   "main": "index.js",
   "scripts": {
+    "start": "./node_modules/.bin/gaston",
     "test": "test/test.js"
   },
   "description": "Allows one to control the native status bar from a web app",
@@ -25,6 +26,7 @@
   },
   "homepage": "https://github.com/vigour-io/vigour-native-statusBar",
   "dependencies": {
+    "gaston": "git+ssh://git@github.com:vigour-io/gaston.git#new-gaston",
     "vigour-native": "git+ssh://git@github.com:vigour-io/vigour-native.git#master",
     "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git#master",
     "vigour-dev-tools": "git+ssh://git@github.com:vigour-io/vigour-dev-tools.git#master"
