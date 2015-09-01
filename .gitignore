@@ -4,3 +4,5 @@ npm-debug.log
 bundle.js
 bundle.css
 *.aar
+.idea/
+*.iml
