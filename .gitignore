@@ -3,3 +3,4 @@ npm-debug.log
 .DS_STORE
 bundle.js
 bundle.css
+*.aar
