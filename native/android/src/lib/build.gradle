@@ -19,6 +19,20 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'io.vigour.plugin:core:1.0-SNAPSHOT'
     compile 'com.android.support:appcompat-v7:21.0.3'
+}
+
+apply plugin: 'maven'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file://localhost" + System.getenv("ANDROID_HOME")
+                    + "/extras/android/m2repository/")
+            pom.version = '1.0-SNAPSHOT'
+            pom.groupId = 'io.vigour.plugin'
+            pom.artifactId = 'statusbar'
+        }
+    }
 }
