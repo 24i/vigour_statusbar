@@ -24,12 +24,16 @@
   "bugs": {
     "url": "https://github.com/vigour-io/vigour-native-statusBar/issues"
   },
+  "contributors": [
+    "Shawn Inder <shawn@vigour.io>",
+    "Michiel Van Liempt <michiel@vigour.io>"
+  ],
+  "license": "GPL",
   "homepage": "https://github.com/vigour-io/vigour-native-statusBar",
   "dependencies": {
     "gaston": "git+ssh://git@github.com:vigour-io/gaston.git#dev",
     "vigour-native": "git+ssh://git@github.com:vigour-io/vigour-native.git",
-    "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git",
-    "vigour-dev-tools": "git+ssh://git@github.com:vigour-io/vigour-dev-tools.git"
+    "vigour-fs": "^2.0.0"
   },
   "optionalDependencies": {},
   "devDependencies": {
