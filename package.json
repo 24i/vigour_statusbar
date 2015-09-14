@@ -36,12 +36,13 @@
     "npm": "^2.7.6",
     "npmlog": "^1.2.0"
   },
-  "plugin": {
-    "id": "statusbar",
-    "android": {
-      "className": "io.vigour.plugin.statusbar.StatusBarPlugin",
-      "instantiation": "new StatusBarPlugin(this, webView)",
-      "libName": "statusbar-debug.aar"
+  "vigour": {
+    "plugin": {
+      "id": "statusbar",
+      "android": {
+        "className": "io.vigour.plugin.statusbar.StatusBarPlugin",
+        "instantiation": "new StatusBarPlugin(this, webview)"
+      }
     }
   }
 }
