@@ -20,6 +20,12 @@ public class StatusBarPlugin extends Plugin implements View.OnSystemUiVisibility
         this.context = activity;
         this.webView = webView;
         webView.setOnSystemUiVisibilityChangeListener(this);
+    }
+
+    public void get() {
+    }
+
+    public void set(Object object) {
 
     }
 
@@ -49,21 +55,15 @@ public class StatusBarPlugin extends Plugin implements View.OnSystemUiVisibility
         });
     }
 
-    int mLastSystemUiVis;
-    int mBaseSystemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                                  | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-
     private void setNavVisibility(boolean visible) {
-        int newVis = mBaseSystemUiVisibility;
         if (!visible) {
-            newVis |= View.SYSTEM_UI_FLAG_LOW_PROFILE | View.SYSTEM_UI_FLAG_FULLSCREEN;
+            webView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE | View.SYSTEM_UI_FLAG_FULLSCREEN);
+        } else {
+            webView.setSystemUiVisibility(0);
         }
-        final boolean changed = newVis == webView.getSystemUiVisibility();
-
-        // Set the new desired visibility.
-        webView.setSystemUiVisibility(newVis);
     }
 
+    int mLastSystemUiVis;
 
     @Override
     public void onSystemUiVisibilityChange(int visibility) {
