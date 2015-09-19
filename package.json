@@ -9,7 +9,7 @@
   "engines": {
     "node": ">=0.10.0"
   },
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "start": "./node_modules/.bin/gaston",
     "test": "test/test.js"
@@ -34,7 +34,8 @@
     "gaston": "git+ssh://git@github.com:vigour-io/gaston.git#dev",
     "promise": "^7.0.4",
     "vigour-fs": "^2.0.0",
-    "vigour-native": "git+ssh://git@github.com:vigour-io/vigour-native.git"
+    "vigour-native": "git+ssh://git@github.com:vigour-io/vigour-native.git",
+    "vjs": "git+ssh://git@github.com:vigour-io/vjs.git"
   },
   "optionalDependencies": {},
   "devDependencies": {
