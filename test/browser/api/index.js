@@ -19,6 +19,6 @@ describe('statusBar', function () {
         console.error('gotz error', err)
       })
 
-    statusBar.background.color.val = '#fffff'
+    statusBar.background.color.val = '#ffffff'
   })
 })
