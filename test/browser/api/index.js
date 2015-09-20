@@ -1,5 +1,4 @@
 /* global describe, it, expect */
-console.clear()
 
 var Observable = require('vjs/lib/observable')
 
