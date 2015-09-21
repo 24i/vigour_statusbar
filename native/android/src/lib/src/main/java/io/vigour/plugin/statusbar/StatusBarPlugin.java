@@ -2,8 +2,11 @@ package io.vigour.plugin.statusbar;
 
 import android.app.Activity;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+
+import java.util.Map;
 
 import io.vigour.nativewrapper.plugin.core.Plugin;
 
@@ -15,6 +18,11 @@ public class StatusBarPlugin extends Plugin implements View.OnSystemUiVisibility
     private final Activity context;
     private final View webView;
 
+    public static final String KEY_VISIBILITY = "visibility";
+    public static final String VISIBILITY_TOP = "top";
+    public static final String VISIBILITY_HIDDEN = "hidden";
+    public static final String VISIBILITY_OVERLAY = "overlay";
+
     public StatusBarPlugin(Activity activity, View webView) {
         super("statusbar");
         this.context = activity;
@@ -22,11 +30,33 @@ public class StatusBarPlugin extends Plugin implements View.OnSystemUiVisibility
         webView.setOnSystemUiVisibilityChangeListener(this);
     }
 
-    public void get() {
+    public String get() {
+        return "{}";
     }
 
     public void set(Object object) {
-
+        Log.i("plugin.set", object.toString());
+        if (object instanceof Map) {
+            Map<String, Object> args = (Map<String, Object>) object;
+            if (args.containsKey(KEY_VISIBILITY)) {
+                Object rawValue = args.get(KEY_VISIBILITY);
+                if (!(rawValue instanceof CharSequence)) {
+                    String message = String.format("value of %s must be one of [%s, %s, %s]",
+                                                   KEY_VISIBILITY, VISIBILITY_HIDDEN, VISIBILITY_OVERLAY, VISIBILITY_TOP);
+                    throw new IllegalArgumentException(message);
+                }
+                String value = rawValue.toString();
+                if (VISIBILITY_TOP.equalsIgnoreCase(value) || VISIBILITY_OVERLAY.equalsIgnoreCase(value)) {
+                    show();
+                } else if (VISIBILITY_HIDDEN.equalsIgnoreCase(value)){
+                    hide();
+                } else {
+                    String message = String.format("value of %s must be one of [%s, %s, %s]",
+                                                   KEY_VISIBILITY, VISIBILITY_HIDDEN, VISIBILITY_OVERLAY, VISIBILITY_TOP);
+                    throw new IllegalArgumentException(message);
+                }
+            }
+        }
     }
 
     public void hide() {
