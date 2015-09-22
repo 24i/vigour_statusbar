@@ -6,7 +6,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="88dp"
+    android:paddingTop="@dimen/activity_horizontal_margin"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -21,15 +21,36 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="hide"
-        android:onClick="hide"
+        android:text="hidden"
+        android:onClick="hidden"
         />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="show"
-        android:onClick="show"
+        android:text="top"
+        android:onClick="top"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="over"
+        android:onClick="over"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="red"
+        android:onClick="red"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="blue"
+        android:onClick="blue"
         />
 
 </LinearLayout>
