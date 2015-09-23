@@ -35,12 +35,32 @@ public class MainActivity extends ActionBarActivity {
         plugin.set(makeMap(StatusBarPlugin.KEY_VISIBILITY, StatusBarPlugin.VISIBILITY_TOP));
     }
 
-    public void red(View v) {
-        plugin.set(makeMap(StatusBarPlugin.KEY_COLOR, "#ccff0000"));
+    public void black(View v) {
+        plugin.set(makeMap(StatusBarPlugin.KEY_COLOR, "#000000"));
     }
 
-    public void blue(View v) {
-        plugin.set(makeMap(StatusBarPlugin.KEY_COLOR, "#aa00ff00"));
+    public void white(View v) {
+        plugin.set(makeMap(StatusBarPlugin.KEY_COLOR, "#ffffff"));
+    }
+
+    public void purple(View v) {
+        plugin.set(makeMap(StatusBarPlugin.KEY_COLOR, "#5E35B1"));
+    }
+
+    public void lime(View v) {
+        plugin.set(makeMap(StatusBarPlugin.KEY_COLOR, "#AFB42B"));
+    }
+
+    public void alpha0(View v) {
+        plugin.set(makeMap(StatusBarPlugin.KEY_TRANSPARENCY, "0"));
+    }
+
+    public void alpha1(View v) {
+        plugin.set(makeMap(StatusBarPlugin.KEY_TRANSPARENCY, "1"));
+    }
+
+    public void alpha04(View v) {
+        plugin.set(makeMap(StatusBarPlugin.KEY_TRANSPARENCY, "0.4"));
     }
 
     private Map<String, Object> makeMap(String... keyvals) {
