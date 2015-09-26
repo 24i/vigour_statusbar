@@ -32,6 +32,7 @@
   "homepage": "https://github.com/vigour-io/vigour-native-statusBar",
   "dependencies": {
     "gaston": "git+ssh://git@github.com:vigour-io/gaston.git#dev",
+    "npmlog": "^1.2.1",
     "promise": "^7.0.4",
     "vigour-fs": "^2.0.0",
     "vigour-native": "git+ssh://git@github.com:vigour-io/vigour-native.git",

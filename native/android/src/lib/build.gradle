@@ -31,7 +31,7 @@ uploadArchives {
         mavenDeployer {
             repository(url: "file://localhost" + System.getenv("ANDROID_HOME")
                     + "/extras/android/m2repository/")
-            pom.version = '0.1-SNAPSHOT'
+            pom.version = '0.2-SNAPSHOT'
             pom.groupId = 'io.vigour.plugin'
             pom.artifactId = 'statusbar'
         }

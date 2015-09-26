@@ -2,13 +2,12 @@ package io.vigour.plugin.example;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import io.vigour.plugin.statusbar.MapWrapper;
 import io.vigour.plugin.statusbar.StatusBarPlugin;
 
 
@@ -24,43 +23,43 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void hidden(View v) {
-        plugin.set(makeMap(StatusBarPlugin.KEY_VISIBILITY, StatusBarPlugin.VISIBILITY_HIDDEN));
+        plugin.set(new MapWrapper().set(StatusBarPlugin.KEY_DISPLAY, StatusBarPlugin.DISPLAY_HIDDEN).map());
     }
 
     public void over(View v) {
-        plugin.set(makeMap(StatusBarPlugin.KEY_VISIBILITY, StatusBarPlugin.VISIBILITY_OVERLAY));
+        plugin.set(new MapWrapper().set(StatusBarPlugin.KEY_DISPLAY, StatusBarPlugin.DISPLAY_OVERLAY).map());
     }
 
     public void top(View v) {
-        plugin.set(makeMap(StatusBarPlugin.KEY_VISIBILITY, StatusBarPlugin.VISIBILITY_TOP));
+        plugin.set(new MapWrapper().set(StatusBarPlugin.KEY_DISPLAY, StatusBarPlugin.DISPLAY_TOP).map());
     }
 
     public void black(View v) {
-        plugin.set(makeMap(StatusBarPlugin.KEY_COLOR, "#000000"));
+        plugin.set(new MapWrapper().set(StatusBarPlugin.KEY_BACKGROUND, StatusBarPlugin.KEY_COLOR, "#000000").map());
     }
 
     public void white(View v) {
-        plugin.set(makeMap(StatusBarPlugin.KEY_COLOR, "#ffffff"));
+        plugin.set(new MapWrapper().set(StatusBarPlugin.KEY_BACKGROUND, StatusBarPlugin.KEY_COLOR, "#ffffff").map());
     }
 
     public void purple(View v) {
-        plugin.set(makeMap(StatusBarPlugin.KEY_COLOR, "#5E35B1"));
+        plugin.set(new MapWrapper().set(StatusBarPlugin.KEY_BACKGROUND, StatusBarPlugin.KEY_COLOR, "#5E35B1").map());
     }
 
     public void lime(View v) {
-        plugin.set(makeMap(StatusBarPlugin.KEY_COLOR, "#AFB42B"));
+        plugin.set(new MapWrapper().set(StatusBarPlugin.KEY_BACKGROUND, StatusBarPlugin.KEY_COLOR, "#AFB42B").map());
     }
 
     public void alpha0(View v) {
-        plugin.set(makeMap(StatusBarPlugin.KEY_TRANSPARENCY, "0"));
+        plugin.set(new MapWrapper().set(StatusBarPlugin.KEY_BACKGROUND, StatusBarPlugin.KEY_TRANSPARENCY, 0).map());
     }
 
     public void alpha1(View v) {
-        plugin.set(makeMap(StatusBarPlugin.KEY_TRANSPARENCY, "1"));
+        plugin.set(new MapWrapper().set(StatusBarPlugin.KEY_BACKGROUND, StatusBarPlugin.KEY_TRANSPARENCY, 1).map());
     }
 
     public void alpha04(View v) {
-        plugin.set(makeMap(StatusBarPlugin.KEY_TRANSPARENCY, "0.4"));
+        plugin.set(new MapWrapper().set(StatusBarPlugin.KEY_BACKGROUND, StatusBarPlugin.KEY_TRANSPARENCY, 0.4).map());
     }
 
     private Map<String, Object> makeMap(String... keyvals) {

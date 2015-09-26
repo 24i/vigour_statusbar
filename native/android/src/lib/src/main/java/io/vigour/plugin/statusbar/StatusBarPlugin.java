@@ -4,14 +4,13 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;
-
-import java.util.Map;
 
 import io.vigour.nativewrapper.plugin.core.Plugin;
 
@@ -23,14 +22,20 @@ public class StatusBarPlugin extends Plugin {
     private final Activity context;
     private final View webView;
 
-    public static final String KEY_VISIBILITY = "visibility";
-    public static final String KEY_COLOR = "background";
+    public static final String KEY_DISPLAY = "display";
+    public static final String KEY_BACKGROUND = "background";
+    public static final String KEY_FOREGROUND = "foreground";
+
+    public static final String KEY_COLOR = "color";
     public static final String KEY_TRANSPARENCY = "transparency";
-    public static final String VISIBILITY_TOP = "top";
-    public static final String VISIBILITY_HIDDEN = "hidden";
-    public static final String VISIBILITY_OVERLAY = "overlay";
+
+    public static final String DISPLAY_TOP = "top";
+    public static final String DISPLAY_HIDDEN = "hidden";
+    public static final String DISPLAY_OVERLAY = "overlay";
 
     private final Window window;
+    private String lastColorString = "#000000";
+    private Float lastTranparency = 1.f;
 
     private interface Implementation {
         void setHidden();
@@ -51,15 +56,15 @@ public class StatusBarPlugin extends Plugin {
 
         window = activity.getWindow();
 
-        if (Build.VERSION.SDK_INT < 19) {
+        if (Build.VERSION.SDK_INT < 16) {
             impementation = new OldImplementation();
+        } else if (Build.VERSION.SDK_INT < 19) {
+            impementation = new BaseImplementation();
         } else if (Build.VERSION.SDK_INT < 21) {
             impementation = new KitkatImplementation(activity);
-//            impementation = new BaseImplementation();
         } else {
             impementation = new LollipopImplementation();
         }
-
 
     }
 
@@ -67,52 +72,62 @@ public class StatusBarPlugin extends Plugin {
         return "{}";
     }
 
-    public void set(Object object) {
-        Log.i("plugin.set", object.toString());
-        if (!(object instanceof Map)) {
-            throw new IllegalArgumentException("value must be an object/map");
-        }
+    public void set(Object rawArg) {
+        MapWrapper arg = new MapWrapper(rawArg);
+        Log.i("plugin.set", rawArg.toString());
 
-        Map<String, String> args = (Map<String, String>) object;
-        if (args.containsKey(KEY_VISIBILITY)) {
-            Object rawValue = args.get(KEY_VISIBILITY);
+        if (arg.has(KEY_DISPLAY)) {
+            Object rawValue = arg.get(KEY_DISPLAY);
             setVisibility(rawValue);
         }
 
-        if (args.containsKey(KEY_COLOR)) {
-            Object rawValue = args.get(KEY_COLOR);
-            setColor(rawValue);
+        if (arg.has(KEY_BACKGROUND)) {
+            String rawColor = arg.getString(KEY_BACKGROUND, KEY_COLOR);
+            Float rawTransparency = arg.getFloat(KEY_BACKGROUND, KEY_TRANSPARENCY);
+            setColor(rawColor, rawTransparency);
+        }
+
+        if (arg.has(KEY_FOREGROUND)) {
+            throw new IllegalArgumentException("setting statusbar foreground is not supported on android");
         }
 
     }
 
-    private void setColor(Object rawValue) {
-        if (!(rawValue instanceof CharSequence)) {
-            String message = String.format("value of %s must be a hexcode (like #ffbb00)",
-                                           KEY_COLOR);
-            throw new IllegalArgumentException(message);
+    private void setColor(@Nullable String colorString, @Nullable Float transparency) {
+        if (colorString == null) {
+            colorString = lastColorString;
+        } else {
+            lastColorString = colorString;
         }
-        String value = rawValue.toString();
-        int color = Color.parseColor(value);
+
+        if (transparency == null) {
+            transparency = lastTranparency;
+        } else {
+            lastTranparency = transparency;
+        }
+
+        int color = Color.parseColor(colorString);
+        int alpha  = (int)(transparency * 0xff);
+        color = alpha << 24 | (color & 0xffffff);
         impementation.setColor(color);
     }
 
     private void setVisibility(Object rawValue) {
         if (!(rawValue instanceof CharSequence)) {
             String message = String.format("value of %s must be one of [%s, %s, %s]",
-                                           KEY_VISIBILITY, VISIBILITY_HIDDEN, VISIBILITY_OVERLAY, VISIBILITY_TOP);
+                                           KEY_DISPLAY, DISPLAY_HIDDEN, DISPLAY_OVERLAY, DISPLAY_TOP);
             throw new IllegalArgumentException(message);
         }
         String value = rawValue.toString();
-        if (VISIBILITY_TOP.equalsIgnoreCase(value)) {
+        if (DISPLAY_TOP.equalsIgnoreCase(value)) {
             impementation.setTop();
-        } else if (VISIBILITY_OVERLAY.equalsIgnoreCase(value)) {
+        } else if (DISPLAY_OVERLAY.equalsIgnoreCase(value)) {
             impementation.setOverlay();
-        } else if (VISIBILITY_HIDDEN.equalsIgnoreCase(value)) {
+        } else if (DISPLAY_HIDDEN.equalsIgnoreCase(value)) {
             impementation.setHidden();
         } else {
             String message = String.format("value of %s must be one of [%s, %s, %s]",
-                                           KEY_VISIBILITY, VISIBILITY_HIDDEN, VISIBILITY_OVERLAY, VISIBILITY_TOP);
+                                           KEY_DISPLAY, DISPLAY_HIDDEN, DISPLAY_OVERLAY, DISPLAY_TOP);
             throw new IllegalArgumentException(message);
         }
     }
@@ -170,8 +185,8 @@ public class StatusBarPlugin extends Plugin {
             context.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-//                    webView.setSystemUiVisibility(0);
-                    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+                    webView.setSystemUiVisibility(0);
+//                    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
                     window.getDecorView().requestLayout();
                     window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS |
                                       WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION |
@@ -186,8 +201,8 @@ public class StatusBarPlugin extends Plugin {
             context.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-//                    webView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-                    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+                    webView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+//                    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
                     window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
                     window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS |
                                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
@@ -219,6 +234,8 @@ public class StatusBarPlugin extends Plugin {
         private final SystemBarTintManager tintManager;
 
         public KitkatImplementation(Activity activity) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS |
+                            WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
             tintManager=new SystemBarTintManager(activity);
             tintManager.setStatusBarTintEnabled(true);
             tintManager.setNavigationBarTintEnabled(true);
@@ -254,6 +271,20 @@ public class StatusBarPlugin extends Plugin {
     }
 
     private class LollipopImplementation extends BaseImplementation {
+
+        @Override
+        public void setOverlay() {
+            context.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    webView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+//                    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN |
+                                      WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS |
+                                      WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+                }
+            });
+        }
 
         @Override
         public void setColor(final int color) {
