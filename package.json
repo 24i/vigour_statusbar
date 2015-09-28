@@ -45,8 +45,8 @@
   },
   "vigour": {
     "plugin": {
-      "id": "statusbar",
       "android": {
+        "skipInstall": true,
         "className": "io.vigour.plugin.statusbar.StatusBarPlugin",
         "instantiation": "new StatusBarPlugin(this, webview)"
       }
