@@ -6,3 +6,7 @@ bundle.css
 *.aar
 .idea/
 *.iml
+mocha.css
+mocha.js
+test-runner.html
+bundles

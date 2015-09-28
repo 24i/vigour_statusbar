@@ -1,25 +1,22 @@
 {
-  "name": "vigour-native-statusBar",
-  "version": "0.0.1",
-  "author": "Shawn Inder <shawn@vigour.io>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vigour-io/vigour-native-statusBar"
-  },
-  "engines": {
-    "node": ">=0.10.0"
-  },
+  "name": "status-bar",
+  "version": "1.0.0",
+  "description": "Native status bar control",
   "main": "lib/index.js",
   "scripts": {
     "start": "./node_modules/.bin/gaston",
-    "test": "test/test.js"
+    "test": "./node_modules/.bin/gaston test browser"
   },
-  "description": "Allows one to control the native status bar from a web app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vigour-io/status-bar.git"
+  },
   "keywords": [
     "vigour",
+    "wrapper",
     "native",
     "plugin",
-    "statusBar"
+    "status-bar"
   ],
   "bugs": {
     "url": "https://github.com/vigour-io/vigour-native-statusBar/issues"
@@ -28,8 +25,15 @@
     "Shawn Inder <shawn@vigour.io>",
     "Michiel Van Liempt <michiel@vigour.io>"
   ],
-  "license": "GPL",
-  "homepage": "https://github.com/vigour-io/vigour-native-statusBar",
+  "license": "ISC",
+  "author": "Vigour",
+  "bugs": {
+    "url": "https://github.com/vigour-io/status-bar/issues"
+  },
+  "homepage": "https://github.com/vigour-io/status-bar",
+  "engines": {
+    "node": ">=0.12"
+  },
   "dependencies": {
     "gaston": "git+ssh://git@github.com:vigour-io/gaston.git#dev",
     "npmlog": "^1.2.1",
@@ -40,8 +44,7 @@
   },
   "optionalDependencies": {},
   "devDependencies": {
-    "npm": "^2.7.6",
-    "npmlog": "^1.2.0"
+    "gaston": "^0.14.0"
   },
   "vigour": {
     "plugin": {
@@ -51,5 +54,8 @@
         "instantiation": "new StatusBarPlugin(this, webview)"
       }
     }
+  },
+  "standard": {
+    "globals": [ "describe", "it", "expect", "before", "after", "beforeEach", "afterEach", "sinon" ]
   }
 }
