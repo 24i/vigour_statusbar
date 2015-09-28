@@ -46,4 +46,5 @@ Promise.resolve()
   .then(assemble)
   .catch(function (reason) {
     log.error(reason)
+    process.exit(1)
   })
