@@ -5,8 +5,19 @@ Allows one to control the native status bar from a web app
 `npm i vigour-native-statusBar`
 
 ##Usage
-See [test/index.js](test/index.js)
+See [the tests](test/api/all/index.js)
 
-##Building a set of native apps from your codebase
-- `npm run build`
-- `npm run build -- ios android`
+NOTE tests are out of date the api is now get/set of a object with this structure:
+```
+{
+  display: "top" | "hidden" | "overlay",
+  background: {
+    color: <hex code>
+    transparency: [0..1]
+  },
+  foreground: {
+    color: <hex code>
+    transparency: [0..1]
+  },
+}
+```
