@@ -57,5 +57,8 @@
   },
   "standard": {
     "globals": [ "describe", "it", "expect", "before", "after", "beforeEach", "afterEach", "sinon" ]
+  },
+  "gaston": {
+    "source-maps": true
   }
 }
