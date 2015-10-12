@@ -40,8 +40,8 @@
     "npmlog": "^1.2.1",
     "promise": "^7.0.4",
     "vigour-fs": "^2.0.0",
-    "vigour-native": "git+ssh://git@github.com:vigour-io/vigour-native.git",
-    "vjs": "git+ssh://git@github.com:vigour-io/vjs.git"
+    "vigour-native": "git+ssh://git@github.com:vigour-io/vigour-native.git#develop",
+    "vjs": "git+ssh://git@github.com:vigour-io/vjs.git#develop"
   },
   "vigour": {
     "plugin": {
