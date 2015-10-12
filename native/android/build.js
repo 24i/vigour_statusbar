@@ -5,7 +5,7 @@ var Promise = require('promise')
 var path = require('path')
 
 // paths
-var srcPath = path.join(__dirname, 'src')
+var srcPath = path.join(__dirname, 'statusbar')
 
 log.info('building .aar files from source')
 
