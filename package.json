@@ -28,10 +28,6 @@
     "Alexander van de Werff <alex@vigour.io>"
   ],
   "license": "ISC",
-  "author": "Vigour",
-  "bugs": {
-    "url": "https://github.com/vigour-io/status-bar/issues"
-  },
   "homepage": "https://github.com/vigour-io/status-bar",
   "engines": {
     "node": ">=0.12"
@@ -39,7 +35,6 @@
   "dependencies": {
     "npmlog": "^1.2.1",
     "promise": "^7.0.4",
-    "vigour-fs": "^2.0.0",
     "vigour-native": "git+ssh://git@github.com:vigour-io/vigour-native.git#develop",
     "vjs": "git+ssh://git@github.com:vigour-io/vjs.git#develop"
   },
