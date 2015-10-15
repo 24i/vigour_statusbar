@@ -68,8 +68,13 @@ public class StatusBarPlugin extends Plugin {
 
     }
 
+    @Override
+    public String getReadyMessage() {
+        return get();
+    }
+
     public String get() {
-        return "{}";
+        return "{\"display\": \"top\", \"background\":{\"color\": \"#000000\", \"opacity\":1}}";
     }
 
     public void set(Object rawArg) {
