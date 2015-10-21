@@ -50,7 +50,7 @@ public class StatusBarPlugin extends Plugin {
     private Implementation impementation;
 
     public StatusBarPlugin(Activity activity, View webView) {
-        super("statusbar");
+        super("status-bar");
         this.context = activity;
         this.webView = webView;
 
