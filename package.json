@@ -1,5 +1,5 @@
 {
-  "name": "status-bar",
+  "name": "vigour-status-bar",
   "version": "1.0.0",
   "description": "Native status bar control",
   "main": "lib/index.js",
@@ -27,7 +27,7 @@
     "Michiel Van Liempt <michiel@vigour.io>",
     "Alexander van de Werff <alex@vigour.io>"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "homepage": "https://github.com/vigour-io/status-bar",
   "engines": {
     "node": ">=0.12"
@@ -35,8 +35,8 @@
   "dependencies": {
     "npmlog": "^1.2.1",
     "promise": "^7.0.4",
-    "vigour-native": "git+ssh://git@github.com:vigour-io/vigour-native.git#develop",
-    "vjs": "git+ssh://git@github.com:vigour-io/vjs.git#develop"
+    "vigour-js": "^0.2.2",
+    "vigour-wrapper": "0.0.5"
   },
   "vigour": {
     "plugin": {

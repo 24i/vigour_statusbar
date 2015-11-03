@@ -1,4 +1,4 @@
-# vigour-native-statusBar
+# vigour-status-bar
 Allows one to control the native status bar from a web app
 
 ## Install
