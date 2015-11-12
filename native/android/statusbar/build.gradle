@@ -1,7 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply plugin: 'maven-publish'
 
 buildscript {
     repositories {
+        mavenLocal()
         jcenter()
     }
     dependencies {
@@ -16,6 +18,17 @@ buildscript {
 
 allprojects {
     repositories {
+        mavenLocal()
         jcenter()
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'io.vigour.plugin'
+            artifactId 'status-bar'
+            version '0.0'
+        }
     }
 }
