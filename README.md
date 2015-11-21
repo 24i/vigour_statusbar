@@ -2,9 +2,7 @@
 Allows one to control the native status bar from a web app
 
 ## Install
-- Add `"plugin": "git+ssh://git@github.com:vigour-io/plugin.git#master"` to the dependencies in [pakage.json](pakage.json)
-- Run `npm update plugin`
-- *Coming soon*: `npm i vigour-plugin`
+- `npm i vigour-status-bar`
 
 ## Updates via upstream remote
 - `git remote add skeleton git@github.com:vigour-io/plugin.git`
