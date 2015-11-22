@@ -16,12 +16,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
 }
 
 dependencies {
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     compile 'io.vigour:plugin-core:0.4.1'
     compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.fasterxml.jackson.jr:jackson-jr-objects:2.5.1'
 }
 
 task androidJavadocs(type: Javadoc) {
@@ -56,11 +61,13 @@ ext {
     siteUrl = 'https://github.com/vigour-io/plugin-status-bar'
     gitUrl = 'https://github.com/vigour-io/plugin-status-bar.git'
 
-    libraryVersion = '0.2'
+    libraryVersion = '0.2.1'
 
     developerId = 'vigour'
     developerName = 'Michiel van Liempt'
     developerEmail = 'dev@vigour.io'
+
+    dryRun = true
 
     licenseName = 'The MIT License'
     licenseUrl = 'http://opensource.org/licenses/mit-license.php'

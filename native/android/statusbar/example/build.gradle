@@ -17,10 +17,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
 }
 
 dependencies {
     compile 'com.android.support:appcompat-v7:22.0.0'
-    compile 'io.vigour.plugin:core:+'
-    compile project(':lib')
+    compile 'io.vigour:plugin-core:+'
+    compile project(':plugin-status-bar')
 }
