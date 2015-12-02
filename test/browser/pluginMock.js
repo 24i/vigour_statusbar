@@ -5,6 +5,7 @@ exports.platform = {
       statusbar () {
         setTimeout(() => {
           this.parent.set({
+            ready: true,
             display: 'top',
             background: {
               color: '333',
@@ -15,6 +16,13 @@ exports.platform = {
               opacity: 0.5
             }
           })
+        })
+      }
+    },
+    change: {
+      statusbar () {
+        setTimeout(() => {
+          return
         })
       }
     }
