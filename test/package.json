@@ -7,6 +7,17 @@
     "package": true
   },
   "vigour": {
+    "statusbar": {
+      "display": "top",
+      "background": {
+        "color": "0FFF30",
+        "opacity": 0.5
+      },
+      "text": {
+        "color": "33EE04",
+        "opacity": 0.8
+      }
+    },
     "native": {
       "debug": true,
       "platforms": {

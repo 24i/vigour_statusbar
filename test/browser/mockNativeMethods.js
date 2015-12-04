@@ -5,18 +5,7 @@ var mockMethods = {
   init (opts, cb) {
     // init the plugin and get the current status bar configuration
     setTimeout(function () {
-      cb && cb(null, {
-        ready: true,
-        display: 'top',
-        background: {
-          color: '333',
-          opacity: 0.5
-        },
-        text: {
-          color: '333',
-          opacity: 0.5
-        }
-      })
+      cb && cb(null)
     })
   },
   display (opts, cb) {
