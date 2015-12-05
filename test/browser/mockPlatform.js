@@ -16,6 +16,14 @@ exports._platform = {
           return
         })
       }
+    },
+    display: {
+      statusbar (data) {
+        setTimeout(() => {
+          data.done(null)
+          return
+        })
+      }
     }
   }
 }

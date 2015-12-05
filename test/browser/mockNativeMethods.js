@@ -9,12 +9,15 @@ var mockMethods = {
     })
   },
   display (opts, cb) {
+    console.log('native display mock', opts)
     cb && cb(null)
   },
   background (opts, cb) {
+    console.log('native background mock', opts)
     cb && cb(null)
   },
   text (opts, cb) {
+    console.log('native text mock', opts)
     cb && cb(null)
   }
 }

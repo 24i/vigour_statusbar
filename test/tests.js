@@ -21,6 +21,11 @@ module.exports = function (inject, type) {
   it('should set properties on init', function (done) {
     sb.val = true
     sb.ready.is(true, function () {
+      console.log(sb.display)
+      console.log(sb.background.color.val)
+      console.log(sb.background.opacity.val)
+      console.log(sb.text.color.val)
+      console.log(sb.text.opacity.val)
       expect(sb.display.val).to.not.be.false
       expect(sb.background.color.val).to.not.be.false
       expect(sb.background.opacity.val).to.not.be.false
@@ -84,6 +89,7 @@ module.exports = function (inject, type) {
 
   it('should be able to change just the opacity for text', (done) => {
     sb.text.opacity.on('data', (data) => {
+      console.log('text opacity', data)
       expect(sb.text.opacity.val).to.equal(0.9)
       if (!manual) {
         done()
@@ -99,45 +105,33 @@ module.exports = function (inject, type) {
     }
   })
 
-  it('should be able to hide the status bar', function (done) {
+  it('should be able to control the display of status bar', function (done) {
+    this.timeout(5000)
+    var displayShould
+    var times = 0
     sb.display.on('data', () => {
-      expect(sb.display.val).to.equal('hidden')
-      if (!manual) done()
+      expect(sb.display.val).to.equal(displayShould)
+      if (!manual && times === 3) done()
     })
-    sb.display.val = 'hidden'
-    if (manual) {
-      alert('check if the status bar is now hidden')
-      setTimeout(function () {
-        done()
+    setTimeout(() => {
+      times++
+      sb.display.val = displayShould = 'hidden'
+      setTimeout(() => {
+        times++
+        sb.display.val = displayShould = 'overlay'
+        setTimeout(() => {
+          times++
+          sb.display.val = displayShould = 'top'
+        }, 1000)
       }, 1000)
-    }
-  })
-
-  it('should be able to put the status bar in overlay', function (done) {
-    sb.display.on('data', () => {
-      expect(sb.display.val).to.equal('hidden')
-      if (!manual) done()
-    })
-    sb.display.val = 'overlay'
+    }, 1000)
     if (manual) {
-      alert('check if the status bar is now overlay')
-      setTimeout(function () {
-        done()
-      }, 1000)
-    }
-  })
-
-  it('should be able to put the status bar on top', function (done) {
-    sb.display.on('data', () => {
-      expect(sb.display.val).to.equal('top')
-      if (!manual) done()
-    })
-    sb.display.val = 'top'
-    if (manual) {
-      alert('check if the status bar is now on top')
+      alert('did the statusbar changed 3 times (hidden, overlay, top)?')
       setTimeout(function () {
         done()
       }, 1000)
     }
   })
 }
+
+
