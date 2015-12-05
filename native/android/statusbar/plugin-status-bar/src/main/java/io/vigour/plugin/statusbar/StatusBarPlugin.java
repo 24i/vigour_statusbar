@@ -2,6 +2,7 @@ package io.vigour.plugin.statusbar;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.Nullable;
@@ -10,7 +11,11 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.fasterxml.jackson.jr.ob.JSON;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import io.vigour.nativewrapper.plugin.core.Plugin;
 
@@ -64,6 +69,14 @@ public class StatusBarPlugin extends Plugin {
             impementation = new KitkatImplementation(activity);
         } else {
             impementation = new LollipopImplementation();
+        }
+
+        try {
+            InputStream stream = activity.getAssets().open("plugin-data/status-bar.json");
+            Object initialData = JSON.std.anyFrom(stream);
+            set(initialData);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }
