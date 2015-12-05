@@ -21,11 +21,6 @@ module.exports = function (inject, type) {
   it('should set properties on init', function (done) {
     sb.val = true
     sb.ready.is(true, function () {
-      console.log(sb.display)
-      console.log(sb.background.color.val)
-      console.log(sb.background.opacity.val)
-      console.log(sb.text.color.val)
-      console.log(sb.text.opacity.val)
       expect(sb.display.val).to.not.be.false
       expect(sb.background.color.val).to.not.be.false
       expect(sb.background.opacity.val).to.not.be.false
@@ -89,7 +84,6 @@ module.exports = function (inject, type) {
 
   it('should be able to change just the opacity for text', (done) => {
     sb.text.opacity.on('data', (data) => {
-      console.log('text opacity', data)
       expect(sb.text.opacity.val).to.equal(0.9)
       if (!manual) {
         done()
@@ -133,5 +127,3 @@ module.exports = function (inject, type) {
     }
   })
 }
-
-
