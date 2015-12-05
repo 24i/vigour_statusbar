@@ -36,6 +36,7 @@
     "npmlog": "^1.2.1",
     "promise": "^7.0.4",
     "vigour-js": "^0.2.2",
+    "vigour-env": "^1.0.6",
     "vigour-wrapper": "^1.0.5"
   },
   "vigour": {
