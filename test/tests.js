@@ -99,34 +99,45 @@ module.exports = function (inject, type) {
     }
   })
 
-   // display
-  // it('should be able to hide the status bar', function (done) {
-  //   this.timeout(25000)
-  //   sb.display.val = 'hidden'
-  //   setTimeout(() => {
-  //     expect(sb.display.val).to.equal('hidden')
-  //     done()
-  //   }, 1000)
-  //   alert('status bar should be hidden')
-  // })
+  it('should be able to hide the status bar', function (done) {
+    sb.display.on('data', () => {
+      expect(sb.display.val).to.equal('hidden')
+      if (!manual) done()
+    })
+    sb.display.val = 'hidden'
+    if (manual) {
+      alert('check if the status bar is now hidden')
+      setTimeout(function () {
+        done()
+      }, 1000)
+    }
+  })
 
-  // it('should be able to put the status bar in overlay', function (done) {
-  //   this.timeout(25000)
-  //   sb.display.val = 'overlay'
-  //   setTimeout(() => {
-  //     expect(sb.display.val).to.equal('overlay')
-  //     done()
-  //   }, 1000)
-  //   alert('status bar should be in overlay')
-  // })
+  it('should be able to put the status bar in overlay', function (done) {
+    sb.display.on('data', () => {
+      expect(sb.display.val).to.equal('hidden')
+      if (!manual) done()
+    })
+    sb.display.val = 'overlay'
+    if (manual) {
+      alert('check if the status bar is now overlay')
+      setTimeout(function () {
+        done()
+      }, 1000)
+    }
+  })
 
-  // it('should be able to put the status bar on top', function (done) {
-  //   this.timeout(25000)
-  //   sb.display.val = 'top'
-  //   setTimeout(() => {
-  //     expect(sb.display.val).to.equal('top')
-  //     done()
-  //   }, 1000)
-  //   alert('status bar should be on top')
-  // })
+  it('should be able to put the status bar on top', function (done) {
+    sb.display.on('data', () => {
+      expect(sb.display.val).to.equal('top')
+      if (!manual) done()
+    })
+    sb.display.val = 'top'
+    if (manual) {
+      alert('check if the status bar is now on top')
+      setTimeout(function () {
+        done()
+      }, 1000)
+    }
+  })
 }
