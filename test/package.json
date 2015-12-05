@@ -1,7 +1,7 @@
 {
-  "name": "vigour-status-bar-tests",
+  "name": "vigour-statusbar-tests",
   "dependencies": {
-    "vigour-status-bar": "../"
+    "vigour-statusbar": "../"
   },
   "gaston": {
     "package": true
