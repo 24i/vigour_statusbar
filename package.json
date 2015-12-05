@@ -11,7 +11,7 @@
     "android": "npm run build && wrapper build --native.selectedPlatforms android",
     "all": "npm run build && wrapper build",
     "prepush": "./node_modules/.bin/standard lib/**/*.js",
-    "postinstall": "./makelinks.sh vigour-status-bar"
+    "postinstall": "./makelinks.sh vigour-statusbar"
   },
   "repository": {
     "type": "git",
