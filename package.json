@@ -1,6 +1,6 @@
 {
   "name": "vigour-statusbar",
-  "version": "1.0.8",
+  "version": "0.0.1",
   "description": "Native status bar control",
   "main": "lib/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "android": "npm run build && wrapper build --native.selectedPlatforms android",
     "all": "npm run build && wrapper build",
     "prepush": "./node_modules/.bin/standard lib/**/*.js",
-    "postinstall": "mkdir test/node_modules 2>/dev/null ; ln -s ../../ test/node_modules/vigour-status-bar"
+    "postinstall": "./makelinks.sh vigour-statusbar"
   },
   "repository": {
     "type": "git",
@@ -42,9 +42,9 @@
     "npmlog": "^1.2.1",
     "promise": "^7.0.4",
     "vigour-env": "^1.0.6",
-    "vigour-js": "~0.3.8",
     "vigour-ua": "~0.0.3",
-    "vigour-wrapper": "~2.2.0"
+    "vigour-wrapper": "~2.2.0",
+    "vigour-config": "~0.0.7"
   },
   "vigour": {
     "plugin": {
