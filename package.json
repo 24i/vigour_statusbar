@@ -1,10 +1,10 @@
 {
   "name": "vigour-statusbar",
-  "version": "0.0.1",
+  "version": "1.0.9",
   "description": "Native status bar control",
   "main": "lib/index.js",
   "scripts": {
-    "test": "./node_modules/.bin/gaston test -r browser",
+    "test": "gaston test -r browser",
     "ios-test": "cd test && ../node_modules/.bin/gaston bundle -t -s manual/index.js -o . -i && wrapper build --native.selectedPlatforms ios",
     "ios": "npm run build && wrapper build --native.selectedPlatforms ios",
     "android-test": "cd test && ../node_modules/.bin/gaston bundle -t -s manual/index.js -o . -i && wrapper build --native.selectedPlatforms android",
@@ -22,7 +22,7 @@
     "wrapper",
     "native",
     "plugin",
-    "status-bar"
+    "statusbar"
   ],
   "bugs": {
     "url": "https://github.com/vigour-io/status-bar/issues"
@@ -41,12 +41,22 @@
   "dependencies": {
     "npmlog": "^1.2.1",
     "promise": "^7.0.4",
-    "vigour-env": "^1.0.6",
-    "vigour-ua": "~0.0.3",
-    "vigour-wrapper": "~2.2.0",
-    "vigour-config": "~0.0.7"
+    "vigour-config": "~0.0.7",
+    "vigour-env": "~1.0.9",
+    "vigour-wrapper": "~2.2.0"
   },
   "vigour": {
+    "statusbar": {
+      "display": "top",
+      "background": {
+        "color": "34CDA7",
+        "opacity": 0
+      },
+      "text": {
+        "color": "fffff",
+        "opacity": 0
+      }
+    },
     "plugin": {
       "android": {
         "className": "io.vigour.plugin.statusbar.StatusBarPlugin",
