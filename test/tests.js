@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = function (inject, type) {
-  var sb, bridge
+  var sb
   var manual = !inject
 
   it('require status-bar', function () {
@@ -12,10 +12,6 @@ module.exports = function (inject, type) {
     it('create instance with mock properties', function () {
       sb = new sb.Constructor(inject)
     })
-  }
-
-  if (type.label === 'bridge') {
-    bridge = window.vigour.native.bridge
   }
 
   it('should set properties on init', function (done) {
