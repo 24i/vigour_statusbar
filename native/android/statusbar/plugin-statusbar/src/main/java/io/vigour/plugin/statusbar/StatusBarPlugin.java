@@ -16,6 +16,7 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map;
 
 import io.vigour.nativewrapper.plugin.core.Plugin;
 
@@ -29,7 +30,6 @@ public class StatusBarPlugin extends Plugin {
 
     public static final String KEY_DISPLAY = "display";
     public static final String KEY_BACKGROUND = "background";
-    public static final String KEY_FOREGROUND = "foreground";
 
     public static final String KEY_COLOR = "color";
     public static final String KEY_TRANSPARENCY = "transparency";
@@ -54,10 +54,15 @@ public class StatusBarPlugin extends Plugin {
 
     private Implementation impementation;
 
+    public void init() {
+
+    }
+
     public StatusBarPlugin(Activity activity, View webView) {
-        super("status-bar");
+        super("statusbar");
         this.context = activity;
         this.webView = webView;
+        Log.d("webview", webView == null ? "null" : webView.toString());
 
         window = activity.getWindow();
 
@@ -73,7 +78,7 @@ public class StatusBarPlugin extends Plugin {
 
         try {
             InputStream stream = activity.getAssets().open("plugin-data/status-bar.json");
-            Object initialData = JSON.std.anyFrom(stream);
+            Map<String, Object> initialData = (Map<String, Object>) JSON.std.anyFrom(stream);
             set(initialData);
         } catch (IOException e) {
             e.printStackTrace();
@@ -81,37 +86,41 @@ public class StatusBarPlugin extends Plugin {
 
     }
 
+    private void set(Map<String, Object> data) {
+        display(data.get(KEY_DISPLAY));
+        background(data.get(KEY_BACKGROUND));
+    }
+
     @Override
     public String getReadyMessage() {
-        return get();
+        try {
+            return JSON.std.asString(new StatusBarInfo());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "error";
+        }
     }
 
-    public String get() {
-        return "{\"display\": \"top\", \"background\":{\"color\": \"#000000\", \"opacity\":1}}";
+    public void text(Object ignored) {
+
     }
 
-    public void set(Object rawArg) {
+    public void background(Object rawArg) {
         MapWrapper arg = new MapWrapper(rawArg);
-        Log.i("plugin.set", rawArg.toString());
+        Log.i("background", rawArg.toString());
 
-        if (arg.has(KEY_DISPLAY)) {
-            Object rawValue = arg.get(KEY_DISPLAY);
-            setVisibility(rawValue);
-        }
+        String rawColor = arg.getString(KEY_COLOR);
+        Float rawTransparency = arg.getFloat(KEY_TRANSPARENCY);
+        setColor(rawColor, rawTransparency);
+    }
 
-        if (arg.has(KEY_BACKGROUND)) {
-            String rawColor = arg.getString(KEY_BACKGROUND, KEY_COLOR);
-            Float rawTransparency = arg.getFloat(KEY_BACKGROUND, KEY_TRANSPARENCY);
-            setColor(rawColor, rawTransparency);
-        }
-
-        if (arg.has(KEY_FOREGROUND)) {
-            throw new IllegalArgumentException("setting statusbar foreground is not supported on android");
-        }
-
+    public void display(Object rawArg) {
+        Log.i("display", rawArg.toString());
+        setVisibility(rawArg.toString());
     }
 
     private void setColor(@Nullable String colorString, @Nullable Float transparency) {
+        Log.i("statusbar", "set color: " + colorString + " trans: " + transparency);
         if (colorString == null) {
             colorString = lastColorString;
         } else {
@@ -122,6 +131,10 @@ public class StatusBarPlugin extends Plugin {
             transparency = lastTranparency;
         } else {
             lastTranparency = transparency;
+        }
+
+        if (colorString.length() > 0 && colorString.charAt(0) != '#') {
+            colorString = "#" + colorString;
         }
 
         int color = Color.parseColor(colorString);
@@ -203,6 +216,7 @@ public class StatusBarPlugin extends Plugin {
             context.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    Log.d("webview", webView == null ? "null" : webView.toString());
                     webView.setSystemUiVisibility(0);
 //                    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
                     window.getDecorView().requestLayout();
@@ -219,6 +233,7 @@ public class StatusBarPlugin extends Plugin {
             context.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    Log.d("webview", webView == null ? "null" : webView.toString());
                     webView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 //                    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
                     window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);

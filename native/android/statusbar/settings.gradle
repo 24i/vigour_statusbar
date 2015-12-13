@@ -1,2 +1,2 @@
 include ':example'
-include ':plugin-status-bar'
+include ':plugin-statusbar'

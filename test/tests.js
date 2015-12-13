@@ -27,6 +27,7 @@ module.exports = function (inject, type) {
   })
 
   it('should be able to change just color for background', (done) => {
+    this.timeout(5000)
     sb.background.color.on('data', (data) => {
       expect(sb.background.color.val).to.equal('FF0000')
       if (!manual) {
@@ -45,6 +46,7 @@ module.exports = function (inject, type) {
   })
 
   it('should be able to change just the opacity for background', (done) => {
+    this.timeout(5000)
     sb.background.opacity.on('data', (data) => {
       expect(sb.background.opacity.val).to.equal(0.9)
       if (!manual) {
@@ -62,6 +64,7 @@ module.exports = function (inject, type) {
   })
 
   it('should be able to change just the color for text', (done) => {
+    this.timeout(5000)
     sb.text.color.on('data', (data) => {
       expect(sb.text.color.val).to.equal('00ff00')
       if (!manual) {
@@ -79,6 +82,7 @@ module.exports = function (inject, type) {
   })
 
   it('should be able to change just the opacity for text', (done) => {
+    this.timeout(5000)
     sb.text.opacity.on('data', (data) => {
       expect(sb.text.opacity.val).to.equal(0.9)
       if (!manual) {
@@ -91,7 +95,7 @@ module.exports = function (inject, type) {
       alert('check if the opacity of text changed')
       setTimeout(function () {
         done()
-      }, 1000)
+      }, 2000)
     }
   })
 
@@ -102,24 +106,24 @@ module.exports = function (inject, type) {
     sb.display.on('data', () => {
       expect(sb.display.val).to.equal(displayShould)
       if (!manual && times === 3) done()
-    })
-    setTimeout(() => {
-      times++
-      sb.display.val = displayShould = 'hidden'
+      })
       setTimeout(() => {
         times++
-        sb.display.val = displayShould = 'overlay'
+        sb.display.val = displayShould = 'hidden'
         setTimeout(() => {
           times++
-          sb.display.val = displayShould = 'top'
+          sb.display.val = displayShould = 'overlay'
+          setTimeout(() => {
+            times++
+            sb.display.val = displayShould = 'top'
+          }, 1000)
         }, 1000)
       }, 1000)
-    }, 1000)
-    if (manual) {
-      alert('did the statusbar changed 3 times (hidden, overlay, top)?')
-      setTimeout(function () {
-        done()
-      }, 1000)
-    }
-  })
-}
+      if (manual) {
+        alert('did the statusbar changed 3 times (hidden, overlay, top)?')
+        setTimeout(function () {
+          done()
+        }, 1000)
+      }
+    })
+  }
