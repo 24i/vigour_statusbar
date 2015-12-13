@@ -26,7 +26,7 @@ module.exports = function (inject, type) {
     })
   })
 
-  it('should be able to change just color for background', (done) => {
+  it('should be able to change just color for background', function (done) {
     this.timeout(5000)
     sb.background.color.on('data', (data) => {
       expect(sb.background.color.val).to.equal('FF0000')
@@ -45,7 +45,7 @@ module.exports = function (inject, type) {
     }
   })
 
-  it('should be able to change just the opacity for background', (done) => {
+  it('should be able to change just the opacity for background', function (done) {
     this.timeout(5000)
     sb.background.opacity.on('data', (data) => {
       expect(sb.background.opacity.val).to.equal(0.9)
@@ -63,7 +63,7 @@ module.exports = function (inject, type) {
     }
   })
 
-  it('should be able to change just the color for text', (done) => {
+  it('should be able to change just the color for text', function (done) {
     this.timeout(5000)
     sb.text.color.on('data', (data) => {
       expect(sb.text.color.val).to.equal('00ff00')
@@ -81,7 +81,7 @@ module.exports = function (inject, type) {
     }
   })
 
-  it('should be able to change just the opacity for text', (done) => {
+  it('should be able to change just the opacity for text', function (done) {
     this.timeout(5000)
     sb.text.opacity.on('data', (data) => {
       expect(sb.text.opacity.val).to.equal(0.9)
