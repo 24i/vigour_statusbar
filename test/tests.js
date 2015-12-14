@@ -106,24 +106,24 @@ module.exports = function (inject, type) {
     sb.display.on('data', () => {
       expect(sb.display.val).to.equal(displayShould)
       if (!manual && times === 3) done()
-      })
+    })
+    setTimeout(() => {
+      times++
+      sb.display.val = displayShould = 'hidden'
       setTimeout(() => {
         times++
-        sb.display.val = displayShould = 'hidden'
+        sb.display.val = displayShould = 'overlay'
         setTimeout(() => {
           times++
-          sb.display.val = displayShould = 'overlay'
-          setTimeout(() => {
-            times++
-            sb.display.val = displayShould = 'top'
-          }, 1000)
+          sb.display.val = displayShould = 'top'
         }, 1000)
       }, 1000)
-      if (manual) {
-        alert('did the statusbar changed 3 times (hidden, overlay, top)?')
-        setTimeout(function () {
-          done()
-        }, 1000)
-      }
-    })
-  }
+    }, 1000)
+    if (manual) {
+      alert('did the statusbar changed 3 times (hidden, overlay, top)?')
+      setTimeout(function () {
+        done()
+      }, 1000)
+    }
+  })
+}
