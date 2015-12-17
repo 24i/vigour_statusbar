@@ -1,8 +1,8 @@
 ## iOS Behaviors
 Since is iOS not all the behaviour are working, the plugin will execute statusbar changes in the followinf way:
 
-* it will ignore color changes for both background and text
-* it will set statusbar trnasparent or not transparent based on background opacity
+* it will ignore opacity changes for both background and text
+* it will set statusbar trnasparent or not transparent based on background color depending on the color value, if closer to `ffffff` then will be light background otherwise dark background
 * it will set statusbar as hidden for display value `hidden` and not hidden for other values
 
 ### Plugin API
