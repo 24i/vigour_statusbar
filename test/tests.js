@@ -172,31 +172,24 @@ module.exports = function (inject, type) {
     }
   })
 
-  it('should be able to control the display of status bar', function (done) {
-    this.timeout(10000)
-    var displayShould
-    var times = 0
-    sb.display.on('data', () => {
-      expect(sb.display.val).to.equal(displayShould)
-      if (!manual && times === 3) done()
-    })
-    setTimeout(() => {
-      times++
-      sb.display.val = displayShould = 'hidden'
-      setTimeout(() => {
-        times++
-        sb.display.val = displayShould = 'overlay'
-        setTimeout(() => {
-          times++
-          sb.display.val = displayShould = 'top'
-        }, 1000)
-      }, 1000)
+  it('should set statusbar to hidden', function (done) {
+    sb.display.val = 'hidden'
+    setTimeout(function () {
+      done()
     }, 1000)
-    if (manual) {
-      alert('the statusbar changed 3 times (hidden, overlay, top)?')
-      setTimeout(function () {
-        done()
-      }, 5000)
-    }
+  })
+
+  it('should set statusbar to top', function (done) {
+    sb.display.val = 'top'
+    setTimeout(function () {
+      done()
+    }, 1000)
+  })
+
+  it('should set statusbar to overlay', function (done) {
+    sb.display.val = 'overlay'
+    setTimeout(function () {
+      done()
+    }, 1000)
   })
 }
