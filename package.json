@@ -1,6 +1,6 @@
 {
   "name": "vigour-statusbar",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Native status bar control",
   "main": "lib/index.js",
   "scripts": {
