@@ -1,0 +1,58 @@
+{
+  "name": "vigour-statusbar-example",
+  "dependencies": {
+    "vigour-statusbar": "../"
+  },
+  "gaston": {
+    "package": true
+  },
+  "vigour": {
+    "statusbar": {
+      "display": "top",
+      "background": {
+        "color": "000000",
+        "opacity": 1
+      },
+      "text": {
+        "color": "ffffff",
+        "opacity": 1
+      }
+    },
+    "plugin": {
+      "android": {
+        "className": "io.vigour.plugin.statusbar.StatusBarPlugin",
+        "instantiation": "new StatusBarPlugin(this, webview)"
+      }
+    },
+    "native": {
+      "platforms": {
+        "ios": {
+          "productName": "StatusBar Example",
+          "organizationName": "Vigour",
+          "organizationIdentifier": "io.vigour.statusbar",
+          "buildNumber": "1",
+          "appIndexPath": "build.html",
+          "NSAllowsArbitraryLoads": true,
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true
+          }
+        },
+        "android": {
+          "productName": "StatusBar Example",
+          "applicationId": "io.vigour.statusbar",
+          "appIndexPath": "build.html",
+          "keystoreFile": "example.keystore",
+          "keystorePassword": "shmexample",
+          "keystoreAlias": "blabla",
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true
+          }
+        }
+      }
+    }
+  }
+}

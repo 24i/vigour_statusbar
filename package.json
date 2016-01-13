@@ -7,6 +7,9 @@
     "test": "gaston test -r browser -s test/browser/index.js",
     "ios-test": "cd test && ../node_modules/.bin/gaston bundle -t -s manual/index.js -o . -i && wrapper build --native.selectedPlatforms ios",
     "ios": "npm run build && wrapper build --native.selectedPlatforms ios",
+    "ios-example": "cd example && gaston build -s index.js -o ./ -i && wrapper build --native.selectedPlatforms ios",
+    "android-example": "cd example && gaston build -s index.js -o ./ -i && wrapper build --native.selectedPlatforms android",
+    "build-example": "npm run ios-example && wrapper build --native.selectedPlatforms android",
     "android-test": "cd test && ../node_modules/.bin/gaston bundle -t -s manual/index.js -o . -i && wrapper build --native.selectedPlatforms android",
     "android": "npm run build && wrapper build --native.selectedPlatforms android",
     "all": "npm run build && wrapper build",
@@ -80,6 +83,8 @@
   "devDependencies": {
     "gaston": "~0.28.10",
     "husky": "^0.10.2",
-    "standard": "^5.4.1"
+    "standard": "^5.4.1",
+    "vigour-element": "git+ssh://git@github.com/vigour-io/element.git#develop",
+    "vigour-js": "^0.4.2"
   }
 }
