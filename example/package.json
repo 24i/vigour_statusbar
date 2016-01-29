@@ -6,6 +6,10 @@
   "gaston": {
     "package": true
   },
+  "scripts": {
+    "build": "gaston build -s ./index.js  -o . -i",
+    "android": "rm -rf ./build.* ; npm run build ; ../node_modules/.bin/wrapper bundle --native.selectedPlatforms android"
+  },
   "vigour": {
     "statusbar": {
       "display": "top",
@@ -16,12 +20,6 @@
       "text": {
         "color": "ffffff",
         "opacity": 1
-      }
-    },
-    "plugin": {
-      "android": {
-        "className": "io.vigour.plugin.statusbar.StatusBarPlugin",
-        "instantiation": "new StatusBarPlugin(this, webview)"
       }
     },
     "native": {
@@ -40,7 +38,10 @@
           }
         },
         "android": {
-          "productName": "StatusBar Example",
+          "___location": "https://sbs-packer.dev.vigour.io",
+          "debug": true,
+          "run": true,
+          "productName": "Statusbar Example",
           "applicationId": "io.vigour.statusbar",
           "appIndexPath": "build.html",
           "keystoreFile": "example.keystore",

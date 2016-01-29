@@ -15,6 +15,13 @@ textColor.on('data', function () {
   sb.text.color.val = this.val
 })
 
+setTimeout(function () {
+  sb.display.val = 'hidden'
+  setTimeout(function () {
+    sb.display.val = 'top'
+  }, 5000)
+})
+
 app.set({
   node: document.body,
   style: {
