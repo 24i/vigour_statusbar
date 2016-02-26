@@ -44,8 +44,9 @@
   "dependencies": {
     "npmlog": "^1.2.1",
     "promise": "^7.0.4",
+    "vigour-env": "^2.0.0",
     "vigour-package": "^1.0.0",
-    "vigour-env": "^2.0.0"
+    "vigour-wrapper-bridge": "^1.0.3"
   },
   "devDependencies": {
     "husky": "^0.10.2",
