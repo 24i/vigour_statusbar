@@ -1,6 +1,6 @@
 'use strict'
 var sb = require('../lib')
-var Observable = require('vigour-js/lib/observable')
+var Observable = require('vigour-observable')
 var app = window.app = require('vigour-element/lib/app')
 
 require('./index.less')
