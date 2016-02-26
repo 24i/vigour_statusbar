@@ -56,7 +56,6 @@
   },
   "standard": {
     "globals": [
-      "alert",
       "describe",
       "it",
       "expect",

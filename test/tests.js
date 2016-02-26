@@ -30,7 +30,6 @@ module.exports = function (inject, type) {
     this.timeout(5000)
     sb.background.color.val = '000000'
     if (manual) {
-      alert('check if the color of status bar changed')
       setTimeout(function () {
         done()
       }, 1000)
@@ -45,7 +44,6 @@ module.exports = function (inject, type) {
     this.timeout(5000)
     sb.background.color.val = 'ffffff'
     if (manual) {
-      alert('check if the color of status bar changed')
       setTimeout(function () {
         done()
       }, 1000)
@@ -60,7 +58,6 @@ module.exports = function (inject, type) {
     this.timeout(5000)
     sb.background.opacity.val = 0
     if (manual) {
-      alert('check if the opacity of status bar changed')
       setTimeout(function () {
         done()
       }, 1000)
@@ -76,7 +73,6 @@ module.exports = function (inject, type) {
     sb.background.opacity.val = 1
 
     if (manual) {
-      alert('check if the opacity of status bar changed')
       setTimeout(function () {
         done()
       }, 1000)
@@ -92,7 +88,6 @@ module.exports = function (inject, type) {
     sb.text.color.val = '000000'
 
     if (manual) {
-      alert('check if the color of text changed')
       setTimeout(function () {
         done()
       }, 1000)
@@ -108,7 +103,6 @@ module.exports = function (inject, type) {
     sb.text.color.val = 'ffffff'
 
     if (manual) {
-      alert('check if the color of text changed')
       setTimeout(function () {
         done()
       }, 1000)
@@ -124,7 +118,6 @@ module.exports = function (inject, type) {
     sb.text.opacity.val = 1
 
     if (manual) {
-      alert('check if the opacity of text changed')
       setTimeout(function () {
         done()
       }, 2000)
@@ -139,7 +132,6 @@ module.exports = function (inject, type) {
     this.timeout(5000)
     sb.text.opacity.val = 0
     if (manual) {
-      alert('check if the opacity of text changed')
       setTimeout(function () {
         done()
       }, 2000)
