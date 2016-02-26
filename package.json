@@ -45,7 +45,7 @@
     "npmlog": "^1.2.1",
     "promise": "^7.0.4",
     "vigour-package": "^1.0.0",
-    "vigour-env": "^2.0.0",
+    "vigour-env": "^2.0.0"
   },
   "devDependencies": {
     "gaston": "~0.28.10",
