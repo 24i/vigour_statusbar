@@ -1,14 +1,15 @@
 {
   "name": "vigour-statusbar-example",
   "dependencies": {
-    "vigour-statusbar": "../"
+    "vigour-statusbar": "../",
+    "vigour-wrapper-bridge": "^1.0.3"
   },
   "gaston": {
     "package": true
   },
   "scripts": {
-    "build": "gaston build -s ./index.js  -o . -i",
-    "android": "rm -rf ./build.* ; npm run build ; ../node_modules/.bin/wrapper bundle --native.selectedPlatforms android"
+    "build": "gaston bundle -s ./index.js  -o . -i",
+    "android": "rm -rf ./build.* && npm run build && ../node_modules/.bin/wrapper bundle --native.selectedPlatforms android"
   },
   "vigour": {
     "statusbar": {
@@ -29,28 +30,27 @@
           "organizationName": "Vigour",
           "organizationIdentifier": "io.vigour.statusbar",
           "buildNumber": "1",
-          "appIndexPath": "build.html",
+          "appIndexPath": "index.html",
           "NSAllowsArbitraryLoads": true,
           "assets": {
-            "build.html": true,
-            "build.js": true,
-            "build.css": true
+            "index.html": true,
+            "bundle.js": true,
+            "bundle.css": true
           }
         },
         "android": {
-          "___location": "https://sbs-packer.dev.vigour.io",
           "debug": true,
           "run": true,
           "productName": "Statusbar Example",
           "applicationId": "io.vigour.statusbar",
-          "appIndexPath": "build.html",
+          "appIndexPath": "index.html",
           "keystoreFile": "example.keystore",
           "keystorePassword": "shmexample",
           "keystoreAlias": "blabla",
           "assets": {
-            "build.html": true,
-            "build.js": true,
-            "build.css": true
+            "index.html": true,
+            "bundle.js": true,
+            "bundle.css": true
           }
         }
       }

@@ -1,7 +1,10 @@
 'use strict'
 var sb = require('../lib')
 var Observable = require('vigour-observable')
-var app = window.app = require('vigour-element/lib/app')
+var Element = require('vigour-element')
+var app = window.app = new Element({
+  DOM: document.body
+})
 
 require('./index.less')
 
