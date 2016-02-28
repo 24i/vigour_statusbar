@@ -7,7 +7,7 @@
     "test": "gaston test -r browser -s test/browser/index.js",
     "ios-test": "cd test && gaston bundle -t -s manual/index.js -o . -i && wrapper build --native.selectedPlatforms ios",
     "ios": "npm run build && wrapper build --native.selectedPlatforms ios",
-    "ios-example": "cd example && gaston build -s index.js -o ./ -i && wrapper build --native.selectedPlatforms ios",
+    "ios-example": "cd example && gaston bundle -x -s index.js -o . -i && wrapper build --native.selectedPlatforms ios",
     "android-example": "cd example && gaston build -s index.js -o ./ -i && wrapper build --native.selectedPlatforms android",
     "build-example": "npm run ios-example && wrapper build --native.selectedPlatforms android",
     "android-test": "cd test && gaston bundle -t -s manual/index.js -o . -i && wrapper build --native.selectedPlatforms android",
@@ -43,7 +43,7 @@
   "dependencies": {
     "vigour-env": "^2.0.0",
     "vigour-package": "^1.0.0",
-    "vigour-wrapper-bridge": "^1.0.3"
+    "vigour-wrapper-bridge": "^1.0.6"
   },
   "devDependencies": {
     "bluebird": "^3.3.3",
@@ -57,11 +57,11 @@
     "statusbar": {
       "display": "top",
       "background": {
-        "color": "34CDA7",
+        "color": "ffffff",
         "opacity": 0
       },
       "text": {
-        "color": "ffffff",
+        "color": "000000",
         "opacity": 0
       }
     },

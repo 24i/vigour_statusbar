@@ -10,12 +10,12 @@
     "statusbar": {
       "display": "top",
       "background": {
-        "color": "0FFF30",
-        "opacity": 0.5
+        "color": "ffffff",
+        "opacity": 0
       },
       "text": {
-        "color": "33EE04",
-        "opacity": 0.8
+        "color": "000000",
+        "opacity": 0
       }
     },
     "native": {
