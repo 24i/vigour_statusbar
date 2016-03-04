@@ -39,11 +39,20 @@ See for more use cases [tests](test)
 
 ### get(callBack)
 
-Returns the current settings of the statusbar in [Statusbar properties](#properties) format.
+Calls the `callBack` passing the current settings of the statusbar in [Statusbar properties](#properties) format.
+
+`callback(null, properties)` in case of success.
+
+`callback(Error('something went wrong'))` in case of error.
 
 ### set(properties, callBack)
 
 Applies the settings in `properties` in [Statusbar properties](#properties) format.
+Callback behavior is the same as `get`:
+
+`callback(null, properties)` in case of success.
+
+`callback(Error('something went wrong'))` in case of error.
 
 #### Statusbar properties<a name="properties"></a>
 
