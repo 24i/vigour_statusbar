@@ -3,12 +3,12 @@
 [![Build Status](https://travis-ci.org/vigour-io/statusbar.svg?branch=develop)](https://travis-ci.org/vigour-io/statusbar)
 
 # Status bar
-Enable status bar customizations
+Enables dynamic status bar customization.
 
 ## Install
-`npm i vigour-statusbar`
+`npm i vigour-statusbar --save `
 
-## Usage
+## Usage, JavaScript API
 The plugin will be used to modify status bar properties.
 
 ```js
@@ -34,3 +34,31 @@ sb.text.color.on('data', () => {
 ```
 
 See for more use cases [tests](test)
+
+## Native bridge API
+
+### get(callBack)
+
+Returns the current settings of the statusbar in [Statusbar properties](#properties) format.
+
+### set(properties, callBack)
+
+Applies the settings in `properties` in [Statusbar properties](#properties) format.
+
+#### Statusbar properties<a name="properties"></a>
+
+Communication about settings of the statusbar always take the following form (keys can be omitted in case of set)
+
+```JavaScript
+var properties = {
+  display: 'top', // 'hidden', // 'overlay', //
+  background: {
+    color: 'ffffff', // six character colour code
+    opacity: 0.3 // value between 0 and 1
+  },
+  text: {
+    color: 'ffffff', // six character colour code
+    opacity: 0.3 // value between 0 and 1
+  }
+}
+```
