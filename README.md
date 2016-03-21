@@ -71,3 +71,15 @@ var properties = {
   }
 }
 ```
+
+#### Android bottom Navigation bar
+
+![Navigation bar](http://developer.android.com/design/media/whats_new_nav_bar.png)
+
+Android devices sometimes have a bottom bar with navigation options. The native Android plugin allows for control of the navigation bar in the properties object with the following format:
+
+```JavaScript
+var properties = {
+  navigationBar: 'top', // 'hidden'
+}
+```
