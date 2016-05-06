@@ -41,9 +41,9 @@
     "node": ">=0.12"
   },
   "dependencies": {
-    "vigour-ua": "https://github.com/vigour-io/ua.git#cordova",
+    "vigour-ua": "vigour-io/ua.git#cordova",
     "vigour-package": "^1.0.0",
-    "vigour-wrapper-bridge": "^1.0.6"
+    "vigour-wrapper-bridge": "vigour-io/wrapper-bridge.git#debug/Q"
   },
   "devDependencies": {
     "bluebird": "^3.3.3",
