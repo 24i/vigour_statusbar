@@ -41,7 +41,7 @@
     "node": ">=0.12"
   },
   "dependencies": {
-    "vigour-env": "^2.0.0",
+    "vigour-ua": "https://github.com/vigour-io/ua.git#cordova",
     "vigour-package": "^1.0.0",
     "vigour-wrapper-bridge": "^1.0.6"
   },
